@@ -2,4 +2,9 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
-return {}
+return {
+  require 'custom.plugins.yazi',
+  'vimpostor/vim-tpipeline',
+  require 'custom.plugins.opencode',
+  -- Add other custom plugins here
+}

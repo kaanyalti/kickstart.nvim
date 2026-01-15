@@ -6,5 +6,6 @@ return {
   require 'custom.plugins.yazi',
   'vimpostor/vim-tpipeline',
   require 'custom.plugins.opencode',
-  -- Add other custom plugins here
+  require 'custom.plugins.fugitive',
+  require 'custom.plugins.tmux-navigator',
 }

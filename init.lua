@@ -587,7 +587,9 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        gopls = {},
+        gopls = {
+          buildFlags = { '-tags=unit' },
+        },
         pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -863,9 +865,32 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     config = function()
-      require('nvim-treesitter').setup({
-        ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'go', 'gomod', 'gosum' },
-      })
+      require('nvim-treesitter').setup()
+      -- Install parsers (async, no-op if already installed)
+      require('nvim-treesitter').install {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+        'go',
+        'gomod',
+        'gosum',
+        'css',
+        'javascript',
+        'latex',
+        'scss',
+        'svelte',
+        'tsx',
+        'typst',
+        'vue',
+      }
       -- Enable treesitter highlighting for all supported filetypes
       vim.api.nvim_create_autocmd('FileType', {
         callback = function()
